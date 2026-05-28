@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Drills</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:     #080818;
+  --card:   #10102a;
+  --card2:  #181838;
+  --cyan:   #00e5c4;
+  --text:   #e8eaf6;
+  --muted:  #5a5a88;
+  --border: rgba(255,255,255,0.08);
+}
+
+html, body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(255,255,255,.45) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 28% 72%, rgba(255,255,255,.30) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 45% 33%, rgba(255,255,255,.35) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 61% 87%, rgba(255,255,255,.25) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 74% 14%, rgba(255,255,255,.40) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 85% 55%, rgba(255,255,255,.30) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 93% 78%, rgba(255,255,255,.20) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 7%  91%, rgba(255,255,255,.35) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 38% 48%, rgba(255,255,255,.20) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 62%, rgba(255,255,255,.28) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 19% 40%, rgba(255,255,255,.22) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 67% 30%, rgba(255,255,255,.18) 0%, transparent 100%);
+}
+
+/* ── LAYOUT ── */
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 52px 20px 72px;
+}
+
+/* ── HEADER ── */
+.page-header { text-align: center; margin-bottom: 48px; }
+
+.logo-ring {
+  width: 90px; height: 90px;
+  border: 3px solid var(--cyan);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.6rem;
+  box-shadow: 0 0 40px rgba(0,229,196,.3), inset 0 0 40px rgba(0,229,196,.05);
+  margin: 0 auto 24px;
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+@keyframes pulse-ring {
+  0%,100% { box-shadow: 0 0 40px rgba(0,229,196,.3), inset 0 0 40px rgba(0,229,196,.05); }
+  50%      { box-shadow: 0 0 60px rgba(0,229,196,.6), inset 0 0 60px rgba(0,229,196,.10); }
+}
+
+.page-title {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 2.8rem; letter-spacing: .5px; margin-bottom: 8px;
+}
+.page-sub { color: var(--muted); font-size: 1rem; font-weight: 700; }
+
+/* ── DRILL GRID ── */
+.drill-grid {
+  width: 100%; max-width: 560px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+/* ── DRILL CARD ── */
+.drill-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 20px 22px;
+  display: flex; align-items: center; gap: 16px;
+  cursor: pointer; text-align: left; width: 100%;
+  transition: transform .15s, border-color .2s, box-shadow .2s;
+  position: relative; overflow: hidden;
+}
+.drill-card::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: -20px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--c-rgb), .10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.drill-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--c-rgb), .55);
+  box-shadow: 0 8px 32px rgba(0,0,0,.35), 0 0 0 1px rgba(var(--c-rgb), .15);
+}
+.drill-card:active { transform: translateY(0); }
+
+.drill-icon-wrap {
+  width: 54px; height: 54px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 1.7rem; flex-shrink: 0;
+  background: rgba(var(--c-rgb), .12);
+  border: 1px solid rgba(var(--c-rgb), .25);
+  color: var(--c-hex);
+}
+
+.drill-info { flex: 1; min-width: 0; }
+.drill-name {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 1.25rem; color: var(--text); margin-bottom: 4px;
+}
+.drill-desc { font-size: .84rem; font-weight: 700; color: var(--muted); }
+
+.drill-count {
+  font-size: .76rem; font-weight: 800;
+  color: var(--c-hex);
+  background: rgba(var(--c-rgb), .12);
+  padding: 4px 11px; border-radius: 20px;
+  border: 1px solid rgba(var(--c-rgb), .35);
+  white-space: nowrap; flex-shrink: 0;
+}
+
+.drill-arrow {
+  font-size: 1.5rem; color: var(--muted); flex-shrink: 0;
+  transition: transform .15s, color .15s;
+}
+.drill-card:hover .drill-arrow {
+  transform: translateX(4px);
+  color: var(--c-hex);
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="page-header">
+    <div class="logo-ring">🧮</div>
+    <h1 class="page-title">Math Drills</h1>
+    <p class="page-sub">Pick a drill · blast through it</p>
+  </header>
+
+  <div class="drill-grid" id="drillGrid"></div>
+</div>
+
+<script>
+/* ── REGISTRY ───────────────────────────────────────────────────
+   To add a new drill:
+   1. Create drills/<id>.js  (see times-tables.js for the shape)
+   2. Add one object to this array
+──────────────────────────────────────────────────────────────── */
+const DRILLS = [
+  {
+    id:    'times-tables',
+    name:  'Times Tables',
+    icon:  '×',
+    color: '#00e5c4',
+    rgb:   '0,229,196',
+    desc:  '2× through 12× tables',
+    count: '132 facts',
+  },
+  // { id: 'division',  name: 'Division',  icon: '÷', color: '#ff2d78', rgb: '255,45,120',  desc: '132 division facts', count: '132 facts' },
+  // { id: 'squares',   name: 'Squares',   icon: '²', color: '#ffd60a', rgb: '255,214,10',  desc: '1² through 20²',    count: '20 facts'  },
+  // { id: 'addition',  name: 'Addition',  icon: '+', color: '#8b5cf6', rgb: '139,92,246',  desc: 'Sums to 20',        count: '60 facts'  },
+];
+
+/* ── RENDER ── */
+const grid = document.getElementById('drillGrid');
+
+for (const d of DRILLS) {
+  const card = document.createElement('button');
+  card.className = 'drill-card';
+  card.style.cssText = `--c-hex:${d.color}; --c-rgb:${d.rgb};`;
+  card.innerHTML = `
+    <div class="drill-icon-wrap">${d.icon}</div>
+    <div class="drill-info">
+      <div class="drill-name">${d.name}</div>
+      <div class="drill-desc">${d.desc}</div>
+    </div>
+    <div class="drill-count">${d.count}</div>
+    <div class="drill-arrow">›</div>
+  `;
+  card.addEventListener('click', () => {
+    location.href = `drill.html?drill=${d.id}`;
+  });
+  grid.appendChild(card);
+}
+</script>
+</body>
+</html>
