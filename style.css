@@ -295,6 +295,7 @@ body::before {
   margin-bottom: 20px;
   transition: border-color .2s, box-shadow .2s;
   -moz-appearance: textfield;
+  appearance: none;
 }
 .answer-input::-webkit-outer-spin-button,
 .answer-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
