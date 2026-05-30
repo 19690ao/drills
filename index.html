@@ -43,7 +43,7 @@ body::before {
     radial-gradient(1px   1px   at 67% 30%, rgba(255,255,255,.18) 0%, transparent 100%);
 }
 
-/* ── LAYOUT ── */
+/* -- LAYOUT -- */
 .page {
   position: relative;
   min-height: 100vh;
@@ -53,7 +53,7 @@ body::before {
   padding: 52px 20px 72px;
 }
 
-/* ── HEADER ── */
+/* -- HEADER -- */
 .page-header { text-align: center; margin-bottom: 48px; }
 
 .logo-ring {
@@ -77,13 +77,13 @@ body::before {
 }
 .page-sub { color: var(--muted); font-size: 1rem; font-weight: 700; }
 
-/* ── DRILL GRID ── */
+/* -- DRILL GRID -- */
 .drill-grid {
   width: 100%; max-width: 560px;
   display: flex; flex-direction: column; gap: 14px;
 }
 
-/* ── DRILL CARD ── */
+/* -- DRILL CARD -- */
 .drill-card {
   background: var(--card);
   border: 1.5px solid var(--border);
@@ -159,11 +159,11 @@ body::before {
 </div>
 
 <script>
-/* ── REGISTRY ───────────────────────────────────────────────────
+/* -- REGISTRY ---------------------------------------------------
    To add a new drill:
    1. Create drills/<id>.js  (see multiplication.js for the shape)
    2. Add one object to this array
-──────────────────────────────────────────────────────────────── */
+---------------------------------------------------------------- */
 const DRILLS = [
   {
     id:    'multiplication',
@@ -174,12 +174,12 @@ const DRILLS = [
     desc:  '2× through 12× tables',
     count: '121 facts',
   },
-  // { id: 'division',  name: 'Division',  icon: '÷', color: '#ff2d78', rgb: '255,45,120',  desc: '121 division facts', count: '121 facts' },
+  { id: 'division', name: 'Division', icon: '÷', color: '#ff2d78', rgb: '255,45,120', desc: '121 division facts', count: '121 facts' },
   // { id: 'squares',   name: 'Squares',   icon: '²', color: '#ffd60a', rgb: '255,214,10',  desc: '1² through 20²',    count: '20 facts'  },
   // { id: 'addition',  name: 'Addition',  icon: '+', color: '#8b5cf6', rgb: '139,92,246',  desc: 'Sums to 20',        count: '60 facts'  },
 ];
 
-/* ── RENDER ── */
+/* -- RENDER -- */
 const grid = document.getElementById('drillGrid');
 
 for (const d of DRILLS) {
