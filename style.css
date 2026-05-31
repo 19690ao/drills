@@ -26,7 +26,7 @@ html, body {
   overflow: hidden;
 }
 
-/* ── STAR BACKGROUND ── */
+/* -- STAR BACKGROUND -- */
 body::before {
   content: '';
   position: fixed; inset: 0; pointer-events: none;
@@ -69,7 +69,7 @@ body::before {
 .screen::-webkit-scrollbar { width: 4px; }
 .screen::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
 
-/* ── SCREEN FADE ── */
+/* -- SCREEN FADE -- */
 .screen { animation: none; }
 .screen.fade-in { animation: fade-in .25s ease both; }
 @keyframes fade-in {
@@ -246,7 +246,7 @@ body::before {
 .score-row .val { color: var(--text); }
 .mistakes-val { color: var(--red) !important; }
 
-/* ── QUESTION CARD ── */
+/* -- QUESTION CARD -- */
 .question-card {
   width: 100%;
   background: var(--card);
@@ -281,7 +281,7 @@ body::before {
 .feedback-msg.correct { color: var(--green); }
 .feedback-msg.wrong   { color: var(--red); }
 
-/* ── ANSWER INPUT ── */
+/* -- ANSWER INPUT -- */
 .answer-input {
   background: var(--card2);
   border: 2px solid var(--border);
@@ -306,7 +306,7 @@ body::before {
 .answer-input.input-correct { border-color: var(--green); box-shadow: 0 0 0 4px rgba(0,200,117,.15); }
 .answer-input.input-wrong   { border-color: var(--red);   box-shadow: 0 0 0 4px rgba(255,71,87,.15); }
 
-/* ── CARD ANIMATIONS ── */
+/* -- CARD ANIMATIONS -- */
 @keyframes card-bounce {
   0%   { transform: scale(1); }
   40%  { transform: scale(1.035); }

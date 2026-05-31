@@ -52,7 +52,7 @@ body::before {
     radial-gradient(1px   1px   at 67% 30%, rgba(255,255,255,.18) 0%, transparent 100%);
 }
 
-/* ── LAYOUT ── */
+/* -- LAYOUT -- */
 .container {
   position: relative; width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
@@ -68,12 +68,12 @@ body::before {
 .screen::-webkit-scrollbar { width: 4px; }
 .screen::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
 
-/* ── CONFETTI ── */
+/* -- CONFETTI -- */
 #confettiCanvas {
   position: fixed; inset: 0; pointer-events: none; z-index: 999; display: none;
 }
 
-/* ── ROUND OVERLAY ── */
+/* -- ROUND OVERLAY -- */
 #roundOverlay {
   position: fixed; inset: 0; z-index: 100;
   background: rgba(8,8,24,.9); backdrop-filter: blur(8px);
@@ -128,7 +128,7 @@ body::before {
 .start-sub { color: var(--muted); font-size: 1rem; font-weight: 700; text-align: center; margin-bottom: 40px; }
 .start-sub span { color: var(--accent); }
 
-/* ── BUTTONS ── */
+/* -- BUTTONS -- */
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #000));
   color: #021714; font-family: 'Fredoka One', sans-serif;
@@ -337,7 +337,7 @@ body::before {
 
 .no-data { color: var(--muted); font-weight: 700; font-size: .95rem; text-align: center; margin-top: 40px; }
 
-/* ── SCREEN FADE ── */
+/* -- SCREEN FADE -- */
 .screen { animation: none; }
 .screen.fade-in { animation: fade-in .25s ease both; }
 @keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -445,7 +445,7 @@ try {
   throw 0;
 }
 
-/* ── APPLY DRILL THEME ── */
+/* -- APPLY DRILL THEME -- */
 document.title = `${drill.name} · Math Drills`;
 
 // Set CSS accent color + rgb components for rgba() usage
@@ -749,7 +749,7 @@ function buildStats() {
     </div>`;
 
   if (drill.statsGroup) {
-    /* ── GROUPED VIEW ── */
+    /* -- GROUPED VIEW -- */
     const groupMap = {};
     for (const stat of allStats) {
       const key = drill.statsGroup(stat.q);
@@ -800,7 +800,7 @@ function buildStats() {
     }
 
   } else {
-    /* ── FLAT VIEW ── */
+    /* -- FLAT VIEW -- */
     html += '<div class="section-title">Questions — slowest first</div>';
     const sorted = [...allStats].sort((a, b) => b.firstTime - a.firstTime);
     for (const s of sorted) {
@@ -856,7 +856,7 @@ function stopConfetti() {
   canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 }
 
-/* ── EXPOSE TO INLINE ONCLICK HANDLERS ── */
+/* -- EXPOSE TO INLINE ONCLICK HANDLERS -- */
 window.startQuiz    = startQuiz;
 window.submitAnswer = submitAnswer;
 window.handleKey    = handleKey;
