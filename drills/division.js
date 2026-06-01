@@ -2,9 +2,11 @@ export default {
   name:       'Division',
   icon:       '÷',
   color:      '#ff2d78',
-  desc:       '<span>÷2</span> through <span>÷12</span> · 121 facts',
+  rgb:        '255,45,120',
+  desc:       '÷2 through ÷12',
+  descDrill:  '<span>÷2</span> through <span>÷12</span> · 121 facts',
   countLabel: '121 facts',
-
+  
   questions() {
     const qs = [];
     for (let a = 2; a <= 12; a++) {

@@ -2,7 +2,9 @@ export default {
   name:       'Multiplication',
   icon:       '×',
   color:      '#00e5c4',
-  desc:       '<span>2×</span> through <span>12×</span> · 121 facts',
+  rgb:        '0,229,196',
+  desc:       '2× through 12× tables',
+  descDrill:       '<span>2×</span> through <span>12×</span> · 121 facts',
   countLabel: '121 facts',
 
   questions() {
