@@ -1,7 +1,7 @@
 export const DRILLS = [
   'multiplication',
   'division',
-  // 'squares',
+  'squares',
   // 'addition',
   // 'percents',
   // 'fractions',
