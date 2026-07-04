@@ -92,10 +92,14 @@ export function buildStats(state) {
   if (state.drill.statsGroup) {
     html += _buildGroupedStats(allStats, state.drill);
   } else {
-    html += _buildFlatStats(allStats);
+    html += _buildFlatStats(allStats, state.drill);
   }
 
   container.innerHTML = html;
+}
+
+function _answerLabel(drill, q) {
+  return drill.formatAnswer ? drill.formatAnswer(q) : q.answer;
 }
 
 /* -- Private: grouped stats ------------------------------- */
@@ -140,7 +144,7 @@ function _buildGroupedStats(allStats, drill) {
     html += `<div class="table-section">
       <div class="table-section-hdr">${g.key} - avg ${formatSec(g.avg)}</div>`;
     for (const s of [...g.stats].sort((a, b) => b.firstTime - a.firstTime)) {
-      html += _qRow(s);
+      html += _qRow(s, drill);
     }
     html += '</div>';
   }
@@ -149,19 +153,19 @@ function _buildGroupedStats(allStats, drill) {
 }
 
 /* -- Private: flat stats ---------------------------------- */
-function _buildFlatStats(allStats) {
+function _buildFlatStats(allStats, drill) {
   let html = '<div class="section-title">Questions - slowest first</div>';
   for (const s of [...allStats].sort((a, b) => b.firstTime - a.firstTime)) {
-    html += _qRow(s);
+    html += _qRow(s, drill);
   }
   return html;
 }
 
 /* -- Private: single question row ------------------------- */
-function _qRow(s) {
+function _qRow(s, drill) {
   const hadMistake = !s.gotRight || s.attempts > 1;
   return `<div class="q-row">
-    <span class="q-eq">${s.q.prompt} = ${s.q.answer}</span>
+    <span class="q-eq">${s.q.prompt} = ${_answerLabel(drill, s.q)}</span>
     <span class="q-time">${formatSec(s.firstTime)}</span>
     <span class="q-badge ${hadMistake ? 'badge-err' : 'badge-ok'}">${s.attempts > 1 ? s.attempts + ' tries' : '✓ first'}</span>
   </div>`;
