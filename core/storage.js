@@ -80,7 +80,7 @@ function _updateStreak(drillId) {
   const yesterday = _offsetDate(-1);
 
   if (streak.lastDate === today) {
-    // Already practiced today — no change
+    // Already practiced today - no change
     return;
   } else if (streak.lastDate === yesterday) {
     // Consecutive day

@@ -73,7 +73,7 @@ export function buildStats(state) {
   const container = document.getElementById('statsContent');
 
   if (allStats.length === 0) {
-    container.innerHTML = '<p class="no-data">No data yet — answer some questions first!</p>';
+    container.innerHTML = '<p class="no-data">No data yet - answer some questions first!</p>';
     return;
   }
 
@@ -138,7 +138,7 @@ function _buildGroupedStats(allStats, drill) {
 
   for (const g of groups) {
     html += `<div class="table-section">
-      <div class="table-section-hdr">${g.key} — avg ${formatSec(g.avg)}</div>`;
+      <div class="table-section-hdr">${g.key} - avg ${formatSec(g.avg)}</div>`;
     for (const s of [...g.stats].sort((a, b) => b.firstTime - a.firstTime)) {
       html += _qRow(s);
     }
@@ -150,7 +150,7 @@ function _buildGroupedStats(allStats, drill) {
 
 /* -- Private: flat stats ---------------------------------- */
 function _buildFlatStats(allStats) {
-  let html = '<div class="section-title">Questions — slowest first</div>';
+  let html = '<div class="section-title">Questions - slowest first</div>';
   for (const s of [...allStats].sort((a, b) => b.firstTime - a.firstTime)) {
     html += _qRow(s);
   }

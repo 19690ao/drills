@@ -367,7 +367,7 @@ function finishQuiz() {
   document.getElementById('trophyWrap').textContent    = perfect ? '🌟' : '🏆';
   document.getElementById('completeTitle').textContent = perfect ? 'PERFECT RUN!' : 'All Done!';
   document.getElementById('completeSub').textContent   = perfect
-    ? 'Zero mistakes — you\'re a math legend!'
+    ? 'Zero mistakes - you\'re a math legend!'
     : `${totalMistakes} mistake${totalMistakes !== 1 ? 's' : ''} corrected. Well done!`;
   document.getElementById('timeBig').textContent = formatTime(completionTime);
 
@@ -412,7 +412,7 @@ function buildStats() {
   const container = document.getElementById('statsContent');
 
   if (allStats.length === 0) {
-    container.innerHTML = '<p class="no-data">No data yet — answer some questions first!</p>';
+    container.innerHTML = '<p class="no-data">No data yet - answer some questions first!</p>';
     return;
   }
 
@@ -466,7 +466,7 @@ function buildStats() {
 
     for (const g of groups) {
       html += `<div class="table-section">
-        <div class="table-section-hdr">${g.key} — avg ${formatSec(g.avg)}</div>`;
+        <div class="table-section-hdr">${g.key} - avg ${formatSec(g.avg)}</div>`;
       for (const s of [...g.stats].sort((a, b) => b.firstTime - a.firstTime)) {
         const hadMistake = !s.gotRight || s.attempts > 1;
         html += `<div class="q-row">
@@ -480,7 +480,7 @@ function buildStats() {
 
   } else {
     /* -- FLAT VIEW -- */
-    html += '<div class="section-title">Questions — slowest first</div>';
+    html += '<div class="section-title">Questions - slowest first</div>';
     const sorted = [...allStats].sort((a, b) => b.firstTime - a.firstTime);
     for (const s of sorted) {
       const hadMistake = !s.gotRight || s.attempts > 1;

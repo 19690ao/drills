@@ -10,7 +10,7 @@
 @layer tokens, base, layout, components, screens, utilities;
 
 /* ============================================================
-   TOKENS  (single source of truth — swap here, nothing else)
+   TOKENS  (single source of truth - swap here, nothing else)
 ============================================================ */
 @layer tokens {
   :root {
@@ -31,7 +31,7 @@
     --border: rgba(255, 255, 255, .08);
     --border-hover: rgba(255, 255, 255, .08);
 
-    /* -- color: semantic (per-page theming point — override --accent only) -- */
+    /* -- color: semantic (per-page theming point - override --accent only) -- */
     --accent: var(--cyan);
     --accent-rgb: var(--cyan-rgb);
 
@@ -60,7 +60,7 @@
 }
 
 /* ============================================================
-   BASE  (element defaults — no class-specific opinions here)
+   BASE  (element defaults - no class-specific opinions here)
 ============================================================ */
 @layer base {
   *,
@@ -137,7 +137,7 @@
 }
 
 /* ============================================================
-   LAYOUT  (structure only — no color/type opinions)
+   LAYOUT  (structure only - no color/type opinions)
 ============================================================ */
 @layer layout {
   .page {
@@ -185,7 +185,7 @@
 }
 
 /* ============================================================
-   COMPONENTS  (reusable, self-contained; extend via tokens not edits — OCP)
+   COMPONENTS  (reusable, self-contained; extend via tokens not edits - OCP)
 ============================================================ */
 @layer components {
 
@@ -240,7 +240,7 @@
     animation: shrink 2s linear forwards;
   }
 
-  /* -- buttons: one shared contract (Liskov — any .btn-* is drop-in
+  /* -- buttons: one shared contract (Liskov - any .btn-* is drop-in
      substitutable: pill shape, pointer cursor, transform+shadow on
      hover/active), variants only change surface/color -- */
   .btn-primary,
@@ -398,7 +398,7 @@
   .chip-accent { border-color: rgba(var(--cyan-rgb), .4); color: var(--accent); }
 
   /* -- status badges: two independent variant sets sharing one shape
-     contract (Interface Segregation — callers only reach for the
+     contract (Interface Segregation - callers only reach for the
      small badge interface they need, not the whole card API) -- */
   .badge-ok,
   .badge-err,
@@ -416,7 +416,7 @@
 }
 
 /* ============================================================
-   SCREENS  (one block per screen — SRP; each composes tokens +
+   SCREENS  (one block per screen - SRP; each composes tokens +
    components, never redefines them)
 ============================================================ */
 @layer screens {

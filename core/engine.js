@@ -189,7 +189,7 @@ function finishQuiz() {
   document.getElementById('trophyWrap').textContent    = perfect ? '🌟' : '🏆';
   document.getElementById('completeTitle').textContent = perfect ? 'PERFECT RUN!' : 'All Done!';
   document.getElementById('completeSub').textContent   = perfect
-    ? "Zero mistakes — you're a math legend!"
+    ? "Zero mistakes - you're a math legend!"
     : `${state.totalMistakes} mistake${state.totalMistakes !== 1 ? 's' : ''} corrected. Well done!`;
   document.getElementById('timeBig').textContent = formatTime(state.completionTime);
 
