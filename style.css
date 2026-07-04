@@ -326,6 +326,34 @@ body::before {
 .answer-input.input-correct { border-color: var(--green); box-shadow: 0 0 0 4px rgba(0,200,117,.15); }
 .answer-input.input-wrong   { border-color: var(--red);   box-shadow: 0 0 0 4px rgba(255,71,87,.15); }
 
+/* -- ON-SCREEN NUMPAD -- */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 10px;
+  margin-top: 18px;
+  user-select: none;
+}
+.numpad-key {
+  background: var(--card2);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  color: var(--text);
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 1.4rem;
+  height: 56px;
+  cursor: pointer;
+  transition: border-color .15s, transform .1s, background .15s;
+}
+.numpad-key:hover   { border-color: var(--accent, var(--cyan)); }
+.numpad-key:active  { transform: scale(.92); background: var(--card); }
+.numpad-wide { grid-column: span 2; }
+.numpad-back {
+  color: var(--red);
+  border-color: rgba(255,71,87,.3);
+}
+.numpad-back:hover { border-color: var(--red); }
+
 /* -- CARD ANIMATIONS -- */
 @keyframes card-bounce {
   0%   { transform: scale(1); }
