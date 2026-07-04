@@ -55,12 +55,27 @@
         class="answer-input"
         placeholder="?"
         autocomplete="off"
-        inputmode="numeric"
+        inputmode="none"
         onkeydown="handleKey(event)"
       >
       <button class="btn-submit" onclick="submitAnswer()">Check ✓</button>
+
+      <div class="numpad" id="numpad">
+        <button class="numpad-key" data-key="7">7</button>
+        <button class="numpad-key" data-key="8">8</button>
+        <button class="numpad-key" data-key="9">9</button>
+        <button class="numpad-key" data-key="4">4</button>
+        <button class="numpad-key" data-key="5">5</button>
+        <button class="numpad-key" data-key="6">6</button>
+        <button class="numpad-key" data-key="1">1</button>
+        <button class="numpad-key" data-key="2">2</button>
+        <button class="numpad-key" data-key="3">3</button>
+        <button class="numpad-key numpad-wide" data-key="0">0</button>
+        <button class="numpad-key numpad-back" data-key="back">⌫</button>
+      </div>
     </div>
   </div>
+
 
   <!-- === COMPLETE === -->
   <div id="completeScreen" class="screen">
@@ -519,6 +534,23 @@ function stopConfetti() {
   canvas.style.display = 'none';
   canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 }
+
+/* ========================================
+   ON-SCREEN NUMPAD (mouse-only input)
+======================================== */
+document.getElementById('numpad').addEventListener('click', (e) => {
+  const btn = e.target.closest('.numpad-key');
+  if (!btn) return;
+  const input = document.getElementById('answerInput');
+  const key = btn.dataset.key;
+
+  if (key === 'back') {
+    input.value = input.value.slice(0, -1);
+  } else {
+    input.value += key;
+  }
+  input.focus();
+});
 
 /* -- EXPOSE TO INLINE ONCLICK HANDLERS -- */
 window.startQuiz    = startQuiz;
