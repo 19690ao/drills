@@ -81,6 +81,19 @@ export function startQuiz() {
   renderQuestion(state);
 }
 
+/* -- Answer checking (drill-overridable) ------------------- */
+// Every drill checked the same way from here - this is the seam that
+// lets a drill own its own answer format (int, fraction, etc.)
+// without engine.js knowing the difference.
+function defaultCheckAnswer(raw, q) {
+  const val = parseInt(raw, 10);
+  return !isNaN(val) && val === q.answer;
+}
+
+function formatAnswer(drill, q) {
+  return drill.formatAnswer ? drill.formatAnswer(q) : q.answer;
+}
+
 /* -- Answer submission ------------------------------------ */
 export function submitAnswer() {
   if (state.transitioning) return;
@@ -88,10 +101,11 @@ export function submitAnswer() {
   const input = document.getElementById('answerInput');
   const raw   = input.value.trim();
   if (raw === '') return;
-  const val = parseInt(raw, 10);
-  if (isNaN(val)) return;
 
   const q         = state.currentQueue[state.qIdx];
+  const drill     = state.drill;
+  const checkFn   = drill.checkAnswer || defaultCheckAnswer;
+  const isCorrect = checkFn(raw, q);
   const timeTaken = Date.now() - state.questionStart;
 
   // Record stats
@@ -102,7 +116,7 @@ export function submitAnswer() {
     state.statsMap[q.key].attempts++;
   }
 
-  if (val === q.answer) {
+  if (isCorrect) {
     state.statsMap[q.key].gotRight = true;
     input.className = 'answer-input input-correct';
     flashFeedback(true);
@@ -114,7 +128,7 @@ export function submitAnswer() {
     state.totalMistakes++;
     state.wrongQueue.push(q);
     input.className = 'answer-input input-wrong';
-    flashFeedback(false, q.answer);
+    flashFeedback(false, formatAnswer(drill, q));
     shakeCard();
     state.qIdx++;
     state.transitioning = true;
